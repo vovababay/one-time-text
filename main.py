@@ -59,8 +59,18 @@ async def create_text(request: Request, text: str = Form(...), duration: int = F
     text_id = str(uuid.uuid4())
     await cache.set(text_id, text, ttl=duration * 3600)
     base_url = str(request.base_url)
-    access_url = f"{base_url}get/{text_id}"
+    access_url = f"{base_url}pre_get/{text_id}"
     return templates.TemplateResponse("print_url.html", {"request": {}, "text": access_url})
+
+@app.get("/pre_get/{text_id}", response_class=HTMLResponse)
+async def get_text(request: Request, text_id: str):
+    text = await cache.get(text_id)
+    if not text:
+        message = 'Ссылка не валидна или срок действия ссылки истек'
+        return templates.TemplateResponse("print_url.html", {"request": {}, "text": message})
+    base_url = str(request.base_url)
+    access_url = f"{base_url}get/{text_id}"
+    return templates.TemplateResponse("pre_get.html", {"request": {}, "get_url": access_url})
 
 @app.get("/get/{text_id}", response_class=HTMLResponse)
 async def get_text(text_id: str):
