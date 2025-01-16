@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Time Text</title>
+</head>
+<body>
+    <form method="post" action="/create">
+        <label for="text">Введите текст:</label><br>
+        <textarea id="text" name="text" rows="4" cols="50" required></textarea><br><br>
+
+        <div style="display: flex; gap: 10px; height: 20px;">
+
+            <label for="duration">Выберите срок хранения:</label><br>
+            <select id="duration" name="duration">
+                <option value="1">1 час</option>
+                <option value="6">6 часов</option>
+                <option value="12">12 часов</option>
+                <option value="24">24 часа</option>
+            </select><br><br>
+            <button type="submit">Создать</button>
+        </div>
+    </form>
+</body>
+</html>

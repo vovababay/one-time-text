@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полученный текст</title>
+    <style>
+        pre {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ваш текст:</h1>
+    <pre style="border: 1px solid; width: 100%; padding: 10px;">{{ text | safe }}</pre>
+</body>
+</html>
