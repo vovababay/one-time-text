@@ -137,14 +137,17 @@ The application will be accessible at `http://127.0.0.1:8000`.
 2. **GET `/get/{id}`**  
    Displays the page to receive the text.
 3. **POST `/api/create`**  
-   Creates a one-time text link with a specific duration.  
-4. **GET `/api/get/{id}`**  
-   Retrieves the text if the link is valid.  
-
-   Example cURL request:
+   Creates a one-time text link with a specific duration.
+4. Example cURL request:
    ```bash
    curl -X POST --location 'http://0.0.0.0:8000/api/create/' --header 'Content-Type: application/json' --data '{"text":"test","duration":1}'
    ```
+4. **GET `/api/get/{id}`**  
+   Retrieves the text if the link is valid.
+    ```bash
+   curl --location 'http://0.0.0.0:8000/api/get/{id}'
+   ```
+   
 
 
 
